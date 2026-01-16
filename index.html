@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text: #f8fafc;
+            --code-green: #00ff00;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Hero Header */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            text-align: center;
+        }
+
+        header h1 { font-size: 3.5rem; margin: 0; color: var(--accent); }
+        .scroll-hint { margin-top: 20px; opacity: 0.6; font-style: italic; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Scroll Animation Setup */
+        .project-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s ease-out;
+            margin-bottom: 50px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid #334155;
+            overflow: hidden;
+        }
+
+        .project-section.show { opacity: 1; transform: translateY(0); }
+
+        /* Project Header Area */
+        .project-header {
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header h2 { margin: 0; color: var(--accent); font-size: 1.8rem; }
+
+        /* Hidden Details Area */
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .details.open { max-height: 1500px; }
+
+        .details-content { padding: 30px; border-top: 1px solid #334155; }
+
+        /* Buttons */
+        .toggle-btn {
+            background: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover { background: white; transform: scale(1.05); }
+
+        /* Specialized Styling for Alcatraz Prompt */
+        .ai-terminal {
+            background: #000;
+            color: var(--code-green);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #333;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .preview-box {
+            width: 100%;
+            height: 250px;
+            background: #2d3748;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--accent);
+            border-radius: 10px;
+            color: var(--accent);
+        }
+
+        footer { text-align: center; padding: 60px; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ryder's Projects</h1>
+        <p>Scroll down to explore my work</p>
+        <div class="scroll-hint">Scroll Down ↓</div>
+    </header>
+
+    <div class="container">
+
+        <div class="project-section">
+            <div class="project-header">
+                <h2>Python Turtle Art</h2>
+                <button class="toggle-btn" onclick="toggleProject(this)">See Description</button>
+            </div>
+            <div class="details">
+                <div class="details-content">
+                    <p>A series of generative art pieces created using the Python Turtle library. This project features complex geometric patterns, recursive fractals, and mathematical art generated entirely through code. To generate your own 49ers logo paste this code into Thonny, "import turtle
+tina = turtle.Turtle()
+tina.speed(50)
+tina.penup()
+tina.goto(100,-200)
+tina.pendown()
+
+screen = turtle.Screen()
+my_color = screen.textinput("Color", "What color would you like?")
+tina.color(my_color)
+
+star_size = screen.textinput("star size?", "How big do you want the star to be?")
+star_size = int(star_size)
+
+for i in range(2):
+    tina.width(10)
+    tina.circle(200,180)
+    tina.forward(200)
+    
+tina.right(180)
+tina.penup()
+tina.forward(100)
+tina.pendown()
+
+tina.color("red")
+tina.right(90)
+tina.penup()
+tina.forward(45)
+
+tina.pendown()
+tina.right(90)
+
+tina.forward(85)
+tina.begin_fill()
+for i in range(2):
+    tina.color("red")
+    tina.width(10)
+    tina.circle(150,180)
+    tina.forward(180)
+    
+tina.end_fill()
+
+tina.penup()
+tina.color("white")
+tina.right(180)
+tina.forward(125)
+tina.right(90)
+tina.forward(40)
+tina.pendown()
+tina.right(90)
+tina.circle(50,180)
+tina.left(180)
+tina.penup()
+tina.circle(50,180)
+tina.pendown()
+tina.circle(50,180)
+
+tina.penup()
+tina.forward(100)
+tina.pendown()
+
+tina.right(90)
+tina.forward(100)
+tina.right(180)
+tina.forward(200)
+tina.right(90)
+tina.forward(80)
+tina.right(180)
+tina.penup()
+tina.forward(80)
+tina.left(90)
+tina.forward(70)
+tina.right(90)
+tina.right(180)
+tina.pendown()
+tina.forward(50)
+
+tina.penup()
+tina.forward(70)
+tina.pendown()
+for i in range(5):
+    tina.forward(star_size)
+    tina.right(144)
+    
+tina.penup()
+tina.right(180)
+tina.forward(390)
+tina.pendown()
+tina.left(180)
+for i in range(5):
+    tina.forward(star_size)
+    tina.right(144)
+
+
+"</p>
+                    <<div class="image-placeholder">
+    <img src="https://i.imgur.com/yZaRPUd.png" alt="Description" style="max-width: 300px; height: auto; border-radius: 10px;">
+</div>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <div class="project-header">
+                <h2>AI Escape Game: Alcatraz</h2>
+                <button class="toggle-btn" onclick="toggleProject(this)">See Game Logic</button>
+            </div>
+            <div class="details">
+                <div class="details-content">
+                    <p><strong>Theme:</strong> Historical Escape. <strong>Goal:</strong> Problem-solving and learning about real Alcatraz escape methods.</p>
+                    <p>You are locked in Alcatraz before it shuts down. You must manage materials (sheets, toothbrush, toothpaste) to make a dummy, sneak a spoon from the lunchroom, and find two allies to build a raincoat raft. To play the game paste the paragraphs below into ChatGPT. But do not read the prompt before pasting it into ChatGPT</p>
+                    
+                    <div class="ai-terminal">
+                        <strong>AI Prompt Logic:</strong><br>
+                        "You are the Game Master of The Escape of Alcatraz.
+
+Theme: Historical escape.
+Learning Goal: Problem-solving skills and learn about the ways the prisoners used to escape Alcatraz
+
+Your task: Escape Alcatraz.
+Puzzle description:
+You are locked in Alcatraz right before it is going to shut down, and you need to escape or you will be in prison forever! Challenges: You have to find materials in your cell to make a dummy model of yourself( in the cell, there are bed sheets, a toothbrush, and toothpaste, toilet paper, paint, and 2 dollars in coins. There is also a sink and toilet. You have to manage to make a model of yourself at the right time, but if you get caught making the dummy model, you get sent into a new prison, and you lose the game. 
+
+Then you have lunch in the prison, you have to figure out ways to sneak a spoon or other tool into your cell to chisel away at the vent. Guards are walking around the lunch hall. If they catch you, you lose. There are also metal detectors that you have to go through once you leave. So part of the challenge is finding out what material or way blocks the metal detector from going off.  
+
+In the lunch room, you must find two people who will help you escape. But you must be careful about who you ask; each person will have a character description.
+
+You have to make a raft to escape. You must gather 3-4 materials with your friends to escape. Valid items to make the raft are (Rain coats, a mattress, life jackets, but these have a really rare chance of being found, and wood pallets, but these are rare. (Items that do not work are blankets, trash bags, anything with lots of cloth, anything with metal, and most pieces of wood.
+
+The last step is to escape with the raft and put the fake dummies in place. You have to coordinate with your friends on what time to leave( If the player escapes at night, they have the best odds). The main player will have to go through the vents and escape to the beach, and then wait for their friends and find a way to blow up the raft. Then you go on the raft and win the game.
+
+
+Rules / Guardrails:
+Do not let the player give themselves superpowers, or just say that they are super strong. All players start as average man for the time of the 1950s. The player can not just give themselves any item. Cheating is not allowed; the player may not skip any steps or puzzles. DO NOT OFFER OPTIONS TO THE PLAYER. DON'T TELL THE PLAYER WHAT TO DO. Do not give the players hints or options. Do not automatically perform any moves or actions for the player. Give clear, simple instructions at the start and explain the objective of escaping. Make each new prompt only 1 paragraph max. DON'T OFFER THE USER ANY PHONE NUMBERS OR EMERGENCY NUMBERS.
+
+"
+                    </div>
+                    <div class="preview-box">Escape Game UI Mockup</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <div class="project-header">
+                <h2>Recipe Website Project</h2>
+                <button class="toggle-btn" onclick="toggleProject(this)">See Website</button>
+            </div>
+            <div class="details">
+                <div class="details-content">
+                    <p>A custom website dedicated to the "Octuple Bypass Burger." This project includes instructions for the 19,900-calorie burger, tfo see the website paste this link into your brower, https://67-mason.github.io/67-mason/</p>
+                                    <<div class="image-placeholder">
+                    <img src="https://i.imgur.com/fEQFeGC.png" alt="Description" style="max-width: 300px; height: auto; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="project-section">
+            <div class="project-header">
+                <h2>Dear Data Postcard</h2>
+                <button class="toggle-btn" onclick="toggleProject(this)">See Postcard</button>
+            </div>
+            <div class="details">
+                <div class="details-content">
+                    <p>Inspired by the "Dear Data" project, this is a digital recreation of a hand-drawn data visualization. It tracks personal habits over a week and translates that data into a unique visual language of symbols and colors. I tracked the amount of notifications I get. I tracked this data because it represnets what apps Im most active on. Also because I was just curios.</p>
+                    <img src="https://i.imgur.com/fuPocsT.png" alt="Description" style="max-width: 300px; height: auto; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Developer Portfolio | Built in Sublime Text
+    </footer>
+
+    <script>
+        // Toggle Function
+        function toggleProject(btn) {
+            const details = btn.parentElement.nextElementSibling;
+            details.classList.toggle('open');
+            btn.textContent = details.classList.contains('open') ? "Hide Details" : "See Details";
+        }
+
+        // Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-section').forEach(s => observer.observe(s));
+    </script>
+
+</body>
+</html>
